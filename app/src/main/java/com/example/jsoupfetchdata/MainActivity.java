@@ -44,29 +44,37 @@ public class MainActivity extends AppCompatActivity {
         //t2 = (TextView) findViewById(R.id.txtDesc);
         //btn = (Button) findViewById(R.id.button);
         et = (EditText) findViewById(R.id.editText);
-        try {
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable no) {
+                try {
 
 
-            et.addTextChangedListener(new TextWatcher() {
+                    if (no.length() <=5 ) {
+                        Toast.makeText(MainActivity.this, "please enter valid url", Toast.LENGTH_SHORT).show();
 
-                @Override
-                public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                    } else {
+                        url = et.getText().toString();
+                        new FetchWebsiteData().execute();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
+            }
+        });
 
-                @Override
-                public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                }
 
-                @Override
-                public void afterTextChanged(Editable arg0) {
-                    url = et.getText().toString();
-                    new FetchWebsiteData().execute();
-                }
-            });
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-///////////////////
+            ///////////////////
         /*
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,7 +23,11 @@
         android:hint="Put Your URL Here"
         android:textColor="#ffffff"
         android:textColorHint="#fff"
-        android:textStyle="italic" />
+        android:textStyle="italic" >
+        <requestFocus>
+
+        </requestFocus>
+    </EditText>
 
     <TextView
         android:id="@+id/txtTitle"
@@ -38,6 +42,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
+
         android:id="@+id/imgIcon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
